@@ -1,0 +1,26 @@
+﻿body {
+     width: 100%;
+}
+
+.input-form {
+    margin-top:20px;
+}
+
+.date-form {
+    float:right;
+    
+    font-size: 0.9em;
+    z-index:10;
+    margin-top:5px;
+}
+
+    .date-form input {
+        font-size: 0.9em;
+        color: brown;
+    }
+
+label {
+    font-size: 0.8em;
+}
+
+input { margin-bottom:2px;}
