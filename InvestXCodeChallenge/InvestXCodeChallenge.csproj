@@ -127,6 +127,7 @@
     <Content Include="Global.asax" />
     <Content Include="Html\dirPagination.tpl.html" />
     <Content Include="Html\SearchEvents.html" />
+    <Content Include="Images\ajax_loader.gif" />
     <Content Include="index.html" />
     <Content Include="MyScripts\app.js" />
     <Content Include="MyScripts\datePicker.js" />

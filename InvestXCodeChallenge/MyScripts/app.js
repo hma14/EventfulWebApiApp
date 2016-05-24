@@ -18,8 +18,8 @@ var app = angular.module('app', ['ngRoute', 'dirPagination', 'ngStorage']).
 
 
 
-app.controller('appController', ['$scope', '$rootScope', '$localStorage', '$filter',
-    function ($scope, $rootScope, $localStorage, $filter) {
+app.controller('appController', ['$scope', '$rootScope', '$localStorage', '$filter', '$location',
+    function ($scope, $rootScope, $localStorage, $filter, $location) {
     
     var app_key = 'vxnRCQBVMBcH9xmF'
 
@@ -31,6 +31,7 @@ app.controller('appController', ['$scope', '$rootScope', '$localStorage', '$filt
 
 
     $scope.getEvents = function () {
+        $rootScope.loading = true
         if ($scope.loc === undefined)
             $scope.loc = $localStorage.location
         else
@@ -69,6 +70,8 @@ app.controller('appController', ['$scope', '$rootScope', '$localStorage', '$filt
                 }
                )
             })
+            $rootScope.loading = false
+            $rootScope.$apply()
         });
 
     }
