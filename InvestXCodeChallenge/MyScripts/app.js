@@ -23,11 +23,17 @@ app.controller('appController', ['$scope', '$rootScope', '$localStorage', '$filt
     
     var app_key = 'vxnRCQBVMBcH9xmF'
 
-    $scope.startDate = $filter('date')(new Date('01/01/2016'), 'yyyy-MM-dd')
-    $scope.endDate = $filter('date')(new Date(), 'yyyy-MM-dd')
-    $scope.query = 'music'
+    var today = new Date()
+    var newDate = new Date()
+    newDate.setDate(today.getDate() + 30)
+
+    $scope.startDate = $filter('date')(today, 'yyyy-MM-dd')
+    $scope.endDate = $filter('date')(newDate, 'yyyy-MM-dd')
+
     $scope.sortField = 'start_time'
     $scope.reverse = true
+    $scope.showing = false
+
 
 
     $scope.getEvents = function () {
@@ -39,6 +45,8 @@ app.controller('appController', ['$scope', '$rootScope', '$localStorage', '$filt
 
         var startDate = $filter('date')(new Date($scope.startDate), 'yyyyMMdd00')
         var endDate = $filter('date')(new Date($scope.endDate), 'yyyyMMdd00')
+
+        
 
         var oArgs = {
             app_key: app_key,
@@ -73,6 +81,11 @@ app.controller('appController', ['$scope', '$rootScope', '$localStorage', '$filt
             $rootScope.loading = false
             $rootScope.$apply()
         });
+    }
 
+    $scope.showImage = function(image)
+    {
+        $scope.image = image.medium.url
+        $scope.showing = true
     }
 }])
