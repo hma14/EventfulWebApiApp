@@ -34,14 +34,22 @@ app.controller('appController', ['$scope', '$rootScope', '$localStorage', '$filt
     $scope.reverse = true
     $scope.showing = false
 
+    $scope.loc = $localStorage.loc
+    $scope.query = $localStorage.query
+    $scope.pageNumber = $localStorage.pageNumber
 
 
     $scope.getEvents = function () {
         $rootScope.loading = true
-        if ($scope.loc === undefined)
-            $scope.loc = $localStorage.location
+        if ($scope.loc == null)
+            $scope.loc = $localStorage.loc
         else
-            $localStorage.location = $scope.loc
+            $localStorage.loc = $scope.loc
+
+        if ($scope.query == null)
+            $scope.query = $localStorage.query
+        else
+            $localStorage.query = $scope.query
 
         var startDate = $filter('date')(new Date($scope.startDate), 'yyyyMMdd00')
         var endDate = $filter('date')(new Date($scope.endDate), 'yyyyMMdd00')
@@ -73,6 +81,8 @@ app.controller('appController', ['$scope', '$rootScope', '$localStorage', '$filt
                                 start_time: event.start_time,
                                 performers: event.performers,
                                 image: event.image,
+                                url: event.url,
+                                venue_url: event.venue_url
                             }
                    )
                 }
